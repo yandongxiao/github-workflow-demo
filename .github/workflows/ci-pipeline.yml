@@ -1,0 +1,30 @@
+name: CI PIPELINE # the name of workflow
+
+# GitHub Events
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+# when events happens, the following jobs will be executed
+jobs:
+  build: # Job is a collection of actions. A job runs in an environment defined by runs-on, like a vm.
+    runs-on: ubuntu-latest    # GitHub provides many environments for us to choose, e.g. Windows, macOS, etc.
+    steps:
+    # GitHub provides many built-in actions, they are maintained as GitHub projects, and have versions.
+    # e.g. github.com/actions/checkout. This action has many other parameters to configure.
+    # This action is used to check out your source code.
+    - uses: actions/checkout@v3
+    # https://github.com/actions/setup-go
+    # we can install other components, like go.
+    # actions/setup-go is hosted at github.com/actions/setup-go
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: 1.18
+    # rune the following commands
+    - name: Build
+      run: go build -v ./...
+    - name: Test
+      run: go test -v ./...
