@@ -3,7 +3,7 @@ name: CI PIPELINE2 # the name of workflow
 # GitHub Events
 on:
   pull_request:
-    branches: ["main1"]
+    branches: ["main"]
 
 # when events happens, the following jobs will be executed
 jobs:
@@ -16,4 +16,4 @@ jobs:
     - uses: actions/checkout@v3
     # run the following commands
     - name: Run
-      run: echo "hello world"
+      run: cat /tmp/ddssy
