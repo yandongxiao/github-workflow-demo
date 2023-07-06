@@ -16,4 +16,4 @@ jobs:
     - uses: actions/checkout@v3
     # run the following commands
     - name: Run
-      run: echo "hw"
+      run: echo "hello world"
