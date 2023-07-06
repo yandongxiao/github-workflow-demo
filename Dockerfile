@@ -13,5 +13,5 @@ RUN if [ -d vendor ]; then \
 
 FROM starrocks/static-debian11
 
-COPY --from=build /app/main /sroperator
+COPY --from=build /app/main /main
 CMD ["/main"]
