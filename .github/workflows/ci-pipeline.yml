@@ -3,7 +3,7 @@ name: CI PIPELINE # the name of workflow
 # GitHub Events
 on:
   push:
-    branches: ["main"]
+    branches: ["main1"]
 #  pull_request:
 #    branches: ["main"]
 
