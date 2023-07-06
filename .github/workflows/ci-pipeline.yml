@@ -4,8 +4,8 @@ name: CI PIPELINE # the name of workflow
 on:
   push:
     branches: ["main"]
-  pull_request:
-    branches: ["main"]
+#  pull_request:
+#    branches: ["main"]
 
 # when events happens, the following jobs will be executed
 jobs:
@@ -28,7 +28,7 @@ jobs:
       run: go build -v ./...
     - name: Test
       run: go test -v ./...
-    - name: Build and Push Docker Image
+    - name: Build and Push Docker Image   # this action only support GitHub Push Event
       uses: mr-smithers-excellent/docker-build-push@v4
       with:
         image: meaglekey/github-workflow-demo
