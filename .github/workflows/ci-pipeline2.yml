@@ -1,0 +1,19 @@
+name: CI PIPELINE2 # the name of workflow
+
+# GitHub Events
+on:
+  pull_request:
+    branches: ["main1"]
+
+# when events happens, the following jobs will be executed
+jobs:
+  build: # Job is a collection of actions. A job runs in an environment defined by runs-on, like a vm.
+    runs-on: ubuntu-latest    # GitHub provides many environments for us to choose, e.g. Windows, macOS, etc.
+    steps:
+    # GitHub provides many built-in actions, they are maintained as GitHub projects, and have versions.
+    # e.g. github.com/actions/checkout. This action has many other parameters to configure.
+    # This action is used to check out your source code.
+    - uses: actions/checkout@v3
+    # run the following commands
+    - name: Run
+      run: echo "hello world"
