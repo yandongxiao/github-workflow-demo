@@ -24,3 +24,8 @@ starRocksFeSpec:
     storageSize: 10Gi
     mountPath: /opt/starrocks/fe/meta # overwrite the default meta path
 ```
+
+
+```bash
+kubectl apply -f starrocks-fe-and-be.yaml
+```
