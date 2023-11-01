@@ -43,23 +43,6 @@ jobs:
                 labels: labelsToAdd
               });
             }
-  check-description:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Fail if description does not close an issue
-        uses: actions/github-script@v5
-        with:
-          script: |
-            const prNumber = context.issue.number;
-            const { data: pr } = await github.rest.pulls.get({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: prNumber
-            });
-
-            if (!(/close[sd]? #[0-9]+/i.test(pr.body))) {
-              core.setFailed('PR description does not close an issue.');
-            }
   comment:
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true
