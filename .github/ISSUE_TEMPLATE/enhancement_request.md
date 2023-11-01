@@ -7,14 +7,14 @@ assignees: ''
 
 ---
 
-**Describe the current behavior**
+## Describe the current behavior
 
 A clear and concise description of the current behavior.
 
-**Describe the enhancement**
+## Describe the enhancement
 
 A clear and concise description of what you want to improve.
 
-**Additional context**
+## Additional context
 
 Add any other context or screenshots about the enhancement here.
