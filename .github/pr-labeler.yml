@@ -1,5 +1,0 @@
-feature: 'feature/*'
-enhancement: 'enhancement/*'
-bugfix: 'bugfix/*'
-chore: 'chore/*'
-documentation: 'documentation/*'

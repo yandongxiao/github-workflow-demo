@@ -1,0 +1,48 @@
+name: PR Labeler based on commit messages
+on:
+  pull_request:
+    types: [opened]
+
+permissions:
+  issues: write
+  pull-requests: write
+  id-token: write # This is required for requesting the JWT
+  contents: read  # This is required for actions/checkout
+
+jobs:
+  labeler:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Label PR based on commit messages
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const { owner, repo, number: pull_number } = context.issue;
+            const { data: commits } = await github.rest.pulls.listCommits({ owner, repo, pull_number });
+
+            const labels = new Set();
+            for (const { commit } of commits) {
+              if (commit.message.includes('feature')) {
+                labels.add('feature');
+              }
+              if (commit.message.includes('enhancement')) {
+                labels.add('enhancement');
+              }
+              if (commit.message.includes('bugfix')) {
+                labels.add('bugfix');
+              }
+              if (commit.message.includes('chore')) {
+                labels.add('chore');
+              }
+              if (commit.message.includes('documentation')) {
+                labels.add('documentation');
+              }
+            }
+
+            if (labels.size > 0) {
+              await github.rest.issues.addLabels({ owner, repo, issue_number: pull_number, labels: Array.from(labels) });
+            }
